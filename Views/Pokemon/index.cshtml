@@ -1,0 +1,31 @@
+@model Pokemon
+@{
+    ViewData["PoketStats"] = "Pokemon";
+}
+
+<div class="text-center">
+    <h1 class="display-4">PokeStatsV1</h1>
+    <p>Aqui ira el contenido de la pagina de Pokemon</p>
+    <h2>
+        @ViewBag.Nombre
+    </h2>
+    <form asp-controller="Pokemon" asp-action="Busqueda" method="post">
+        <input name="nombre" type="text" class="form-control" placeholder="Buscar Pokemon" />
+        <button class="btn btn-primary">Buscar</button>
+        <p>
+            @ViewBag.Busca
+            @ViewBag.Pokemon
+        </p>
+        <p>Nombre: @Model.Nombre</p>
+        <p>Numero Pokedex: @Model.NumeroPokedex</p>
+        <p>Tipo: @Model.Tipo</p>
+        <p>HP: @Model.HP</p>
+        <p>Ataque: @Model.Ataque</p>
+        <p>Defensa: @Model.Defensa</p>
+        <p>Ataque Especial: @Model.AtaqueEspecial</p>
+        <p>Defensa Especial: @Model.DefensaEspecial</p>
+        <p>Velocidad: @Model.Velocidad</p>
+        <p>Imagen: @Model.Imagen</p>
+        <p>Habilidad: @Model.Habilidad</p>
+    </form>
+</div>
