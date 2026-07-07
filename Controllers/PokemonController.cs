@@ -16,8 +16,10 @@ public class PokemonController : Controller
     [HttpPost]
     public async Task<IActionResult> Busqueda(string nombre)
     {
+        Console.WriteLine("Entré al Controller");
 
-        ViewBag.Busca = $"Buscando {nombre}...";
+        //ViewBag.Busca = $"Buscando {nombre}...";
+        ViewBag.Busca = "HOLA MARX";
 
         Pokemon pokemon = await new PokemonService().BuscarPokemon(nombre);
 
