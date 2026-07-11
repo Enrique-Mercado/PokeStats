@@ -1,0 +1,558 @@
+/* ===========================
+   CARD
+=========================== */
+.pokemon-card
+{
+    border-radius:20px;
+    transition: 0.3s;
+
+}
+
+
+/* ===========================
+   TIPOS
+=========================== */
+
+.pokemon-fire
+{
+    background-color:#EE8130;
+    color:white;
+}
+.pokemon-water
+{
+    background-color:#6390F0;
+    color:white;
+}
+.pokemon-grass
+{
+    background-color:#7AC74C;
+    color:white;
+}
+.pokemon-electric{
+    background-color:#F7D02C;
+    color:black;
+}
+.pokemon-steel{
+    background-color:#60a1b8;
+    color:black;
+}
+.pokemon-bug{
+    background-color:#91a119;
+    color:white;
+}
+.pokemon-dragon{
+    background-color:#5060e1;
+    color:white;
+}
+.pokemon-ghost{
+    background-color:#704170;
+    color:white;
+}
+.pokemon-fairy{
+    background-color:#ef70ef;
+    color:black;
+}
+.pokemon-ice{
+    background-color:#3fd8ff;
+    color:black;
+}
+.pokemon-fighting{
+    background-color:#ff8000;
+    color:white;
+}
+.pokemon-normal{
+    background-color:#9fa19f;
+    color:black;
+}
+.pokemon.dark{
+    background-color:#50413f;
+    color:white;
+}
+.pokemon-psychic{
+    background-color:#ef4179;
+    color:white;
+}
+.pokemon-rock{
+    background-color:#afa981;
+    color:white;
+}
+.pokemon-ground{
+    background-color:#915121;
+    color:white;
+}
+.pokemon-poison{
+    background-color:#9141cb;
+    color:white;
+}
+.pokemon-flying{
+    background-color:#81b9ef;
+    color:black;
+}
+
+/* ===========================
+   TIPOS - HEADER
+=========================== */
+.pokemon-header-fire{
+    background:#731414;
+    color:white;
+    font-weight:bold;
+}
+
+.pokemon-header-water{
+    background:#144077;
+    color:white;
+    font-weight:bold;
+}
+
+.pokemon-header-grass{
+    background:#1f5014;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-electric{
+    background:#7d6000;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-ice{
+    background:#1f6c7f;
+    color:black;
+    font-weight:bold;
+}
+.pokemon-header-steel{
+    background:#30505c;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-bug{
+    background:#48500c;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-dragon{
+    background:#283070;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-ghost{
+    background:#3f2e4b;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-fairy{
+    background:#773877;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-fighting{
+    background:#7f4000;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-normal{
+    background:#4f504f;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-dark{
+    background:#28201f;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-psychic{
+    background:#77203c;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-rock{
+    background:#575440;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-ground{
+    background:#482810;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-poison{
+    background:#482065;
+    color:white;
+    font-weight:bold;
+}
+.pokemon-header-flying{
+    background:#405c77;
+    color:white;
+    font-weight:bold;
+}
+/* ===========================
+   BARRAS
+=========================== */
+.pokemon-bar-fire{
+    background:#f29394;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-water{
+    background:#94bff7;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-grass{
+    background:#9fd094;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-electric{
+    background:#fcdf7f;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-ice{
+    background:#9febff;
+    color:black;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-steel{
+    background:#afd0db;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-bug{
+    background:#c8d08c;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-dragon{
+    background:#a7aff0;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-ghost{
+    background:#b7a0b7;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-fairy{
+    background:#f7b7f7;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-fighting{
+    background:#ffbf7f;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-normal{
+    background:#cfd0cf;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-dark{
+    background:#a7a09f;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-psychic{
+    background:#f7a0bc;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-rock{
+    background:#d7d4c0;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-ground{
+    background:#c8a890;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-poison{
+    background:#c8a0e5;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+.pokemon-bar-flying{
+    background:#c0dcf7;
+    color:white;
+    font-weight:bold;
+    transition: width .8s ease;
+}
+
+/* ===========================
+   BADGES
+=========================== */
+.pokemon-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 14px;
+
+    margin:4px;
+
+    border-radius:20px;
+
+    font-size:.9rem;
+
+    font-weight:bold;
+
+    width:auto;
+
+    transition: width .8s ease;
+
+    cursor:default;
+
+    box-shadow:0 2px 5px rgba(0,0,0,.2);
+
+    transition:.2s;
+
+    transform:translateY(-2px);
+
+}
+.pokemon-types{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin:12px 0;
+
+}
+.badge-fire{
+    background:#f29394;
+    color:white;
+}
+.badge-water{
+    background:#94bff7;
+    color:white;
+}
+.badge-grass{
+    background:#9fd094;
+    color:white;
+}
+.badge-electric{
+    background:#fcdf7f;
+    color:white;
+}
+.badge-ice{
+    background:#9febff;
+    color:black;
+}
+.badge-steel{
+    background:#afd0db;
+    color:white;
+}
+.badge-bug{
+    background:#c8d08c;
+    color:white;
+}
+.badge-dragon{
+    background:#a7aff0;
+    color:white;
+}
+.badge-ghost{
+    background:#b7a0b7;
+    color:white;
+}
+.badge-fairy{
+    background:#f7b7f7;
+    color:white;
+}
+.badge-fighting{
+    background:#ffbf7f;
+    color:white;
+}
+.badge-normal{
+    background:#cfd0cf;
+    color:white;
+}
+.badge-dark{
+    background:#a7a09f;
+    color:white;
+}
+.badge-psychic{
+    background:#f7a0bc;
+    color:white;
+}
+.badge-rock{
+    background:#d7d4c0;
+    color:white;
+}
+.badge-ground{
+    background:#c8a890;
+    color:white;
+}
+.badge-poison{
+    background:#c8a0e5;
+    color:white;
+}
+.badge-flying{
+    background:#c0dcf7;
+    color:white;
+}
+/* ===========================
+   contenedor de estadisticas
+=========================== */
+.stat-container
+{
+    margin-bottom:20px;
+}
+.stat-title
+{
+    text-align:center;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+.stat-row
+{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+}
+.progress
+{
+    width:60%;
+    height:18px;
+}
+.stat-value
+{
+    width:40px;
+    text-align:left;
+    font-weight:bold;
+}
+/* ===========================
+   IMAGENES
+=========================== */
+.pokemon-img{
+    height:150px;
+}
+.pokemon-image-container{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-bottom:15px;
+
+}
+/* ===========================
+ACCORDION CONTROL
+=========================== */
+
+.accordion-item{
+    border:none !important;
+    background:transparent;
+}
+.accordion-button{
+    background:transparent !important;
+    box-shadow:none !important;
+}
+.accordion-button{
+
+    font-weight:bold;
+
+    color:white;
+
+    border-radius:12px;
+
+    margin-top:8px;
+
+}
+.accordion-button:focus{
+
+    box-shadow:none;
+
+    border:none;
+
+}
+.accordion-collapse{
+
+    transition:all .35s ease;
+
+}
+.accordion-body{
+
+    text-align:left;
+
+    font-size:.9rem;
+
+    line-height:1.5;
+
+    color:#2d3436;
+
+    background:rgba(255,255,255,.35);
+
+    border-radius:12px;
+
+    margin-bottom:10px;
+
+}
+.accordion-button::after{
+
+    display:none;
+
+}
+
+.hidden-ability{
+
+    background:gold;
+
+    color:black;
+
+    padding:2px 10px;
+
+    border-radius:20px;
+
+    font-size:.75rem;
+
+    margin-left:8px;
+
+}
+/* ===========================
+   MEGAS RESERVADO
+=========================== */
+
+.pokemon-form-left,
+.pokemon-form-right{
+
+    width:70px;
+
+    min-height:70px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}

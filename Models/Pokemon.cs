@@ -11,4 +11,12 @@ public class Pokemon
     public int Velocidad { get; set; }
     public string Imagen { get; set; } = "";
     public string Habilidad { get; set; } = "";
+    public string ClaseColor { get; set; } = "";
+    public string ClaseHeader { get; set; } = "";
+    public string ClaseBarra { get; set; } = "";
+    public List<string> Tipos { get; set; } = new();
+    public string DescripcionHabilidad { get; set; } = "";
+    public List<HabilidadPokemon> Habilidades { get; set; } = new();
+    public bool is_hidden { get; set; }
+    
 }

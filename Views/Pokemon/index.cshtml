@@ -16,16 +16,241 @@
             @ViewBag.Busca
             @ViewBag.Pokemon
         </p>
-        <p>Nombre: @Model.Nombre</p>
-        <p>Numero Pokedex: @Model.NumeroPokedex</p>
-        <p>Tipo: @Model.Tipo</p>
-        <p>HP: @Model.HP</p>
-        <p>Ataque: @Model.Ataque</p>
-        <p>Defensa: @Model.Defensa</p>
-        <p>Ataque Especial: @Model.AtaqueEspecial</p>
-        <p>Defensa Especial: @Model.DefensaEspecial</p>
-        <p>Velocidad: @Model.Velocidad</p>
-        <p>Imagen: @Model.Imagen</p>
-        <p>Habilidad: @Model.Habilidad</p>
+        
+        <p>
+
+
+            @if (Model != null)
+            {
+                <text>Pokemon encontrado: @Model.Nombre</text>
+            }
+            else
+            {
+                <text>No se encontró el Pokemon</text>
+            }
+        </p>
+
+        <div class="row justify-content-Left">
+
+            <div class="col-md-6">
+
+                <div class="card">
+
+                    <div class="card-header  d-flex justify-content-between align-items-center @Model.ClaseHeader">
+                        #@Model.NumeroPokedex.ToString("D3")
+                        @Model.Nombre.ToUpper()
+                    </div>
+
+                    <div class="card-body card @Model.ClaseColor">
+                        <div class="pokemon-image-container">
+
+                        <div class="pokemon-form-left">
+
+                            <!-- Mega / Forma Regional -->
+
+                        </div>
+
+                        <img src="@Model.Imagen"
+                            class="pokemon-img"
+                            alt="@Model.Nombre">
+
+                        <div class="pokemon-form-right">
+
+                            <!-- Mega / Gigamax -->
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="pokemon-types">
+                        @foreach (var tipo in Model.Tipos)
+                        {
+                            <span class="pokemon-badge badge-@tipo">
+                                @PokemonHelpers.ObtenerIcono(tipo)
+                                @tipo.ToUpper()
+                            </span>
+                        }
+                    </div>
+                    <div class="accordion accordion-flush" id="accordionHabilidades">
+
+                    @for (int i = 0; i < Model.Habilidades.Count; i++)
+                    {
+                        var habilidad = Model.Habilidades[i];
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapse@(i)">
+                                        <span class="pokeball-icon">
+                                        ⚪ 
+                                        </span>
+
+                                    @PokemonHelpers.FormatearNombre(habilidad.Nombre)
+
+                                    @if (habilidad.EsOculta)
+                                    {
+                                        <span class="hidden-ability">
+                                            ⭐ Oculta
+                                        </span>
+                                    }
+
+                                </button>
+
+                            </h2>
+
+                            <div id="collapse@(i)"
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#accordionHabilidades">
+
+                                <div class="accordion-body">
+
+                                    @habilidad.Descripcion
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+
+                    </div>
+
+                        </*--------------------- HP ----------------------------------------*/>
+                        <div class="stat-container">
+
+                            <p class="stat-title">
+                                HP
+                            </p>
+
+                            <div class="stat-row">
+
+                                <div class="progress @Model.ClaseHeader" >
+                                    <div class="progress-bar @Model.ClaseBarra"  style="width:@((Model.HP * 100)/255)% ">
+                                    </div>
+                                </div>
+
+                                <span class="stat-value">
+                                    @Model.HP
+                                </span>
+
+                            </div>
+
+                        </div></*---------- Fin de HP ----------------------------*/>
+                        </*--------------------- ATAQUE ----------------------------------------*/>
+                        <div class="stat-container">
+
+                            <p class="stat-title">
+                                Ataque
+                            </p>
+
+                            <div class="stat-row">
+
+                                <div class="progress  @Model.ClaseHeader" >
+                                    <div class="progress-bar @Model.ClaseBarra" style="width:@((Model.Ataque * 100)/255)%">
+                                    </div>
+                                </div>
+
+                                <span class="stat-value">
+                                    @Model.Ataque
+                                </span>
+
+                            </div>
+
+                        </div></*---------- Fin de ATAQUE ----------------------------*/>
+                        </*---------------------DEFENSA  ----------------------------------------*/>
+                        <div class="stat-container">
+
+                            <p class="stat-title">
+                                Defensa
+                            </p>
+
+                            <div class="stat-row">
+
+                                <div class="progress  @Model.ClaseHeader" >
+                                    <div class="progress-bar @Model.ClaseBarra" style="width:@((Model.Defensa * 100)/255)%">
+                                    </div>
+                                </div>
+
+                                <span class="stat-value">
+                                    @Model.Defensa
+                                </span>
+
+                            </div>
+
+                        </div></*---------- Fin de Defensa ----------------------------*/>
+                        </*--------------------- Ataque especial ----------------------------------------*/>
+                        <div class="stat-container">
+
+                            <p class="stat-title">
+                                Ataque Especial
+                            </p>
+
+                            <div class="stat-row">
+
+                                <div class="progress  @Model.ClaseHeader" >
+                                    <div class="progress-bar @Model.ClaseBarra" style="width:@((Model.AtaqueEspecial * 100)/255)%">
+                                    </div>
+                                </div>
+
+                                <span class="stat-value">
+                                    @Model.AtaqueEspecial
+                                </span>
+
+                            </div>
+
+                        </div></*---------- Fin de Ataque Especial ----------------------------*/>
+                        </*--------------------- Defensa especial ----------------------------------------*/>
+                        <div class="stat-container">
+
+                            <p class="stat-title">
+                                Defensa Especial
+                            </p>
+
+                            <div class="stat-row">
+
+                                <div class="progress  @Model.ClaseHeader" >
+                                    <div class="progress-bar @Model.ClaseBarra" style="width:@((Model.DefensaEspecial * 100)/255)%">
+                                    </div>
+                                </div>
+
+                                <span class="stat-value">
+                                    @Model.DefensaEspecial
+                                </span>
+
+                            </div>
+
+                        </div></*---------- Fin de Defensa Especial----------------------------*/>
+                       </*--------------------- Velocidad ----------------------------------------*/>
+                        <div class="stat-container">
+
+                            <p class="stat-title">
+                                Velocidad
+                            </p>
+
+                            <div class="stat-row">
+
+                                <div class="progress  @Model.ClaseHeader" >
+                                    <div class="progress-bar @Model.ClaseBarra" style="width:@((Model.Velocidad * 100)/255)%">
+                                    </div>
+                                </div>
+
+                                <span class="stat-value">
+                                    @Model.Velocidad
+                                </span>
+
+                            </div>
+
+                        </div></*---------- Fin de Velocidad ----------------------------*/>
+                        
+                    
+                    </div></* --------------- Fin del body --------------------------------*/>
+                
+                </div>   </* ------------------ Fin del class card --------------*/>
+            
+            </div></*-------------fin div class col md6 --------------------*/>
     </form>
 </div>
