@@ -7,22 +7,36 @@ namespace PokeStatsV1.Controllers;
 
 public class PokemonController : Controller
 {
-    public IActionResult Index()
-    {
+    public async Task<IActionResult> Index()
+{
+    PokemonListService listaService = new PokemonListService();
 
-        return View(new Pokemon());
-    }
+    PokemonViewModel modelo = new();
+
+    modelo.Pokemon = new Pokemon();
+
+    modelo.ListaPokemon = await listaService.ObtenerListaPokemon();
+
+    return View("Index", modelo);
+}
 
     [HttpPost]
-    public async Task<IActionResult> Busqueda(string nombre)
+    public async Task<IActionResult> Busqueda(string busqueda)
     {
         //Console.WriteLine("Entré al Controller");
 
-        ViewBag.Busca = $"Buscando a: {nombre}...";
+        ViewBag.Busca = $"Buscando a: {busqueda}...";
         //ViewBag.Busca = "HOLA MARX";
+        Pokemon pokemon = await new PokemonService().BuscarPokemon(busqueda);
 
-        Pokemon pokemon = await new PokemonService().BuscarPokemon(nombre);
+        PokemonListService listaService = new PokemonListService();
 
-        return View("Index", pokemon);
+        PokemonViewModel modelo = new();
+
+        modelo.Pokemon = pokemon;
+
+        modelo.ListaPokemon = await listaService.ObtenerListaPokemon();
+
+        return View("Index", modelo);
     }
 }

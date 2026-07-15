@@ -13,4 +13,5 @@ public class PokemonResponse
     public List<Ability> abilities { get; set; }
 
     public List<PokeStats> stats { get; set; }
+    public SpeciesInfo species { get; set; }
 }

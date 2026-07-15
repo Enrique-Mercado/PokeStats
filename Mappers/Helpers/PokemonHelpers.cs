@@ -4,6 +4,7 @@ public static class PokemonHelpers
 {
     public static string ObtenerIcono(string? tipo)
     {
+        
         var iconos = new Dictionary<string, string>
         {
             { "fire", "🔥" },
@@ -30,7 +31,7 @@ public static class PokemonHelpers
         if (string.IsNullOrWhiteSpace(tipo))
             return "❔";
 
-        tipo = tipo.Trim().ToUpper();
+        tipo = tipo.Trim().ToLower();
         return iconos.TryGetValue(tipo, out var icono)
             ? icono
             : "❔";

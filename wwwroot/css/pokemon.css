@@ -64,7 +64,7 @@
     background-color:#9fa19f;
     color:black;
 }
-.pokemon.dark{
+.pokemon-dark{
     background-color:#50413f;
     color:white;
 }
@@ -539,10 +539,133 @@ ACCORDION CONTROL
 
 }
 /* ===========================
+   Autocomplete
+=========================== */
+
+.autocomplete-list{
+    position:absolute;
+    width:100%;
+    background:white;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+    z-index:999;
+}
+.autocomplete-item{
+    padding:12px;
+    cursor:pointer;
+}
+
+.autocomplete-item:hover{
+    background:#ececec;
+}
+.autocomplete-item.active{
+    background:#0d6efd;
+    color:white;
+}
+
+/* ===========================
+   LINEA DE EVOLUCION
+=========================== */
+.evolution-arrow{
+    font-size:2rem;
+    font-weight:bold;
+    align-self:center;
+}
+.evolution-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+.evolution-card{
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(4px);
+
+    border:1px solid rgba(255,255,255,.25);
+    border-radius: 8%;
+    color:white;
+}
+.evolution-card:hover{
+
+    transform:translateY(-5px);
+
+}
+.evolution-current{
+
+    border:3px solid gold;
+
+}
+.evolution-card img{
+
+    width:70px;
+
+}
+.evolution-down{
+
+    font-size:30px;
+
+    color:white;
+
+    margin:15px 0;
+
+}
+.evolution-right{
+
+    font-size:30px;
+
+    color:white;
+
+    margin:15px 0;
+
+}
+.evolution-method{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    margin-bottom:6px;
+
+    color:#ffd54f;
+
+}
+
+.evolution-method small{
+
+    font-size:.65rem;
+
+}
+
+.evolution-method strong{
+
+    font-size:.80rem;
+
+}
+
+/* ===========================
    MEGAS RESERVADO
 =========================== */
 
-.pokemon-form-left,
+.pokemon-form-left{
+    width:70px;
+
+    min-height:70px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
 .pokemon-form-right{
 
     width:70px;
@@ -554,5 +677,40 @@ ACCORDION CONTROL
     justify-content:center;
 
     align-items:center;
+
+}
+
+.form-button{
+
+    width:100%;
+
+    margin:6px 0;
+
+    padding:8px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.form-button:hover{
+
+    transform:scale(1.05);
+
+}
+
+.form-current{
+
+    border:2px solid gold;
+
+    font-weight:bold;
 
 }

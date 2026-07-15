@@ -18,5 +18,9 @@ public class Pokemon
     public string DescripcionHabilidad { get; set; } = "";
     public List<HabilidadPokemon> Habilidades { get; set; } = new();
     public bool is_hidden { get; set; }
+    public SpeciesInfo species { get; set; }
+    public List<EvolucionPokemon> Evoluciones { get; set; } = new();
+    public int Profundidad {get;set;}
+    public List<FormaPokemon> Formas { get; set; } = new();
     
 }

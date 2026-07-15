@@ -1,4 +1,5 @@
-@model Pokemon
+@model PokemonViewModel
+@using System.Text.Json
 @{
     ViewData["PoketStats"] = "Pokemon";
 }
@@ -9,9 +10,12 @@
     <h2>
         @ViewBag.Nombre
     </h2>
-    <form asp-controller="Pokemon" asp-action="Busqueda" method="post">
-        <input name="nombre" type="text" class="form-control" placeholder="Buscar Pokemon" />
+    <form asp-controller="Pokemon" asp-action="Busqueda" method="post" id="formBusqueda">
+        <input  id="busqueda" name="busqueda" type="text" class="form-control" placeholder="Buscar Pokemon..." /> 
+        <div id="sugerencias" class="autocomplete-list"></div>
         <button class="btn btn-primary">Buscar</button>
+    </form>
+
         <p>
             @ViewBag.Busca
             @ViewBag.Pokemon
@@ -22,7 +26,7 @@
 
             @if (Model != null)
             {
-                <text>Pokemon encontrado: @Model.Nombre</text>
+                <text>Pokemon encontrado: @Model.Pokemon.Nombre.ToUpper()</text>
             }
             else
             {
@@ -36,34 +40,76 @@
 
                 <div class="card">
 
-                    <div class="card-header  d-flex justify-content-between align-items-center @Model.ClaseHeader">
-                        #@Model.NumeroPokedex.ToString("D3")
-                        @Model.Nombre.ToUpper()
+                    <div class="card-header  d-flex justify-content-between align-items-center @Model.Pokemon.ClaseHeader">
+                        #@Model.Pokemon.NumeroPokedex.ToString("D3")
+                        @Model.Pokemon.Nombre.ToUpper()
                     </div>
 
-                    <div class="card-body card @Model.ClaseColor">
+                    <div class="card-body card @Model.Pokemon.ClaseColor">
                         <div class="pokemon-image-container">
 
                         <div class="pokemon-form-left">
 
-                            <!-- Mega / Forma Regional -->
+                            @foreach(var forma in Model.Pokemon.Formas
+                                .Where(f => f.Tipo == TipoForma.Default ||
+                                            f.Tipo == TipoForma.Regional))
+                            {
+                                <form asp-action="Busqueda"
+                                    asp-controller="Pokemon"
+                                    method="post">
 
-                        </div>
+                                    <input type="hidden"
+                                        name="busqueda"
+                                        value="@forma.Nombre"/>
 
-                        <img src="@Model.Imagen"
+                                    <button
+                                        type="submit"
+                                        class="form-button @(forma.EsActual ? "form-current" : "")">
+
+                                        @forma.NombreMostrar
+
+                                    </button>
+
+                                </form>
+                            }
+
+                            </div>
+
+                        <img src="@Model.Pokemon.Imagen"
                             class="pokemon-img"
-                            alt="@Model.Nombre">
+                            alt="@Model.Pokemon.Nombre">
 
                         <div class="pokemon-form-right">
 
-                            <!-- Mega / Gigamax -->
+                            @foreach(var forma in Model.Pokemon.Formas
+                                .Where(f => f.Tipo != TipoForma.Default &&
+                                            f.Tipo != TipoForma.Regional))
+                            {
+                                <form asp-action="Busqueda"
+                                    asp-controller="Pokemon"
+                                    method="post">
 
-                        </div>
+                                    <input type="hidden"
+                                        name="busqueda"
+                                        value="@forma.Nombre"/>
+
+                                    <button
+                                        type="submit"
+                                        class="form-button @(forma.EsActual ? "form-current" : "")">
+
+                                        @forma.NombreMostrar
+
+                                    </button>
+
+                                </form>
+                            }
+
+                            </div>
 
                     </div>
                     
                     <div class="pokemon-types">
-                        @foreach (var tipo in Model.Tipos)
+                        @foreach (var tipo in Model.Pokemon.Tipos)
                         {
                             <span class="pokemon-badge badge-@tipo">
                                 @PokemonHelpers.ObtenerIcono(tipo)
@@ -73,9 +119,9 @@
                     </div>
                     <div class="accordion accordion-flush" id="accordionHabilidades">
 
-                    @for (int i = 0; i < Model.Habilidades.Count; i++)
+                    @for (int i = 0; i < Model.Pokemon.Habilidades.Count; i++)
                     {
-                        var habilidad = Model.Habilidades[i];
+                        var habilidad = Model.Pokemon.Habilidades[i];
 
                         <div class="accordion-item">
 
@@ -119,7 +165,7 @@
 
                     </div>
 
-                        </*--------------------- HP ----------------------------------------*/>
+</*--------------------- INICIO STATS ----------------------------------------*/>
                         <div class="stat-container">
 
                             <p class="stat-title">
@@ -128,19 +174,18 @@
 
                             <div class="stat-row">
 
-                                <div class="progress @Model.ClaseHeader" >
-                                    <div class="progress-bar @Model.ClaseBarra"  style="width:@((Model.HP * 100)/255)% ">
+                                <div class="progress @Model.Pokemon.ClaseHeader" >
+                                    <div class="progress-bar @Model.Pokemon.ClaseBarra"  style="width:@((Model.Pokemon.HP * 100)/255)% ">
                                     </div>
                                 </div>
 
                                 <span class="stat-value">
-                                    @Model.HP
+                                    @Model.Pokemon.HP
                                 </span>
 
                             </div>
 
-                        </div></*---------- Fin de HP ----------------------------*/>
-                        </*--------------------- ATAQUE ----------------------------------------*/>
+                        </div>
                         <div class="stat-container">
 
                             <p class="stat-title">
@@ -149,19 +194,18 @@
 
                             <div class="stat-row">
 
-                                <div class="progress  @Model.ClaseHeader" >
-                                    <div class="progress-bar @Model.ClaseBarra" style="width:@((Model.Ataque * 100)/255)%">
+                                <div class="progress  @Model.Pokemon.ClaseHeader" >
+                                    <div class="progress-bar @Model.Pokemon.ClaseBarra" style="width:@((Model.Pokemon.Ataque * 100)/255)%">
                                     </div>
                                 </div>
 
                                 <span class="stat-value">
-                                    @Model.Ataque
+                                    @Model.Pokemon.Ataque
                                 </span>
 
                             </div>
 
-                        </div></*---------- Fin de ATAQUE ----------------------------*/>
-                        </*---------------------DEFENSA  ----------------------------------------*/>
+                        </div>
                         <div class="stat-container">
 
                             <p class="stat-title">
@@ -170,19 +214,18 @@
 
                             <div class="stat-row">
 
-                                <div class="progress  @Model.ClaseHeader" >
-                                    <div class="progress-bar @Model.ClaseBarra" style="width:@((Model.Defensa * 100)/255)%">
+                                <div class="progress  @Model.Pokemon.ClaseHeader" >
+                                    <div class="progress-bar @Model.Pokemon.ClaseBarra" style="width:@((Model.Pokemon.Defensa * 100)/255)%">
                                     </div>
                                 </div>
 
                                 <span class="stat-value">
-                                    @Model.Defensa
+                                    @Model.Pokemon.Defensa
                                 </span>
 
                             </div>
 
-                        </div></*---------- Fin de Defensa ----------------------------*/>
-                        </*--------------------- Ataque especial ----------------------------------------*/>
+                        </div>
                         <div class="stat-container">
 
                             <p class="stat-title">
@@ -191,19 +234,18 @@
 
                             <div class="stat-row">
 
-                                <div class="progress  @Model.ClaseHeader" >
-                                    <div class="progress-bar @Model.ClaseBarra" style="width:@((Model.AtaqueEspecial * 100)/255)%">
+                                <div class="progress  @Model.Pokemon.ClaseHeader" >
+                                    <div class="progress-bar @Model.Pokemon.ClaseBarra" style="width:@((Model.Pokemon.AtaqueEspecial * 100)/255)%">
                                     </div>
                                 </div>
 
                                 <span class="stat-value">
-                                    @Model.AtaqueEspecial
+                                    @Model.Pokemon.AtaqueEspecial
                                 </span>
 
                             </div>
 
-                        </div></*---------- Fin de Ataque Especial ----------------------------*/>
-                        </*--------------------- Defensa especial ----------------------------------------*/>
+                        </div>
                         <div class="stat-container">
 
                             <p class="stat-title">
@@ -212,19 +254,18 @@
 
                             <div class="stat-row">
 
-                                <div class="progress  @Model.ClaseHeader" >
-                                    <div class="progress-bar @Model.ClaseBarra" style="width:@((Model.DefensaEspecial * 100)/255)%">
+                                <div class="progress  @Model.Pokemon.ClaseHeader" >
+                                    <div class="progress-bar @Model.Pokemon.ClaseBarra" style="width:@((Model.Pokemon.DefensaEspecial * 100)/255)%">
                                     </div>
                                 </div>
 
                                 <span class="stat-value">
-                                    @Model.DefensaEspecial
+                                    @Model.Pokemon.DefensaEspecial
                                 </span>
 
                             </div>
 
-                        </div></*---------- Fin de Defensa Especial----------------------------*/>
-                       </*--------------------- Velocidad ----------------------------------------*/>
+                        </div>
                         <div class="stat-container">
 
                             <p class="stat-title">
@@ -233,24 +274,160 @@
 
                             <div class="stat-row">
 
-                                <div class="progress  @Model.ClaseHeader" >
-                                    <div class="progress-bar @Model.ClaseBarra" style="width:@((Model.Velocidad * 100)/255)%">
+                                <div class="progress  @Model.Pokemon.ClaseHeader" >
+                                    <div class="progress-bar @Model.Pokemon.ClaseBarra" style="width:@((Model.Pokemon.Velocidad * 100)/255)%">
                                     </div>
                                 </div>
 
                                 <span class="stat-value">
-                                    @Model.Velocidad
+                                    @Model.Pokemon.Velocidad
                                 </span>
 
                             </div>
 
-                        </div></*---------- Fin de Velocidad ----------------------------*/>
-                        
+                        </div>
+</*---------- Fin de Stats ----------------------------*/>
+<h4>Cadena evolutivas</h4>
+
+@{
+    List<EvolucionPokemon> caminoPrincipal = new();
+    List<EvolucionPokemon> bifurcaciones = new();
+
+    bool encontroBifurcacion = false;
+
+    foreach(var evo in Model.Pokemon.Evoluciones)
+    {
+        if(!encontroBifurcacion)
+        {
+            caminoPrincipal.Add(evo);
+
+            if(evo.EsBifurcacion)
+            {
+                encontroBifurcacion = true;
+            }
+        }
+        else
+        {
+            bifurcaciones.Add(evo);
+        }
+    }
+}
+
+<div class="evolution-container">
+
+@foreach(EvolucionPokemon evo in caminoPrincipal)
+{
+
+    <form asp-action="Busqueda"
+          asp-controller="Pokemon"
+          method="post"
+          class="evolution-form">
+
+        <input type="hidden"
+               name="busqueda"
+               value="@evo.Nombre" />
+               
+   @if(!string.IsNullOrEmpty(evo.MetodoEvolucion))
+{
+    <div class="evolution-method">
+
+        <small>
+            @evo.MetodoEvolucion
+        </small>
+
+        <strong>
+            @evo.ValorMetodo
+        </strong>
+
+    </div>
+}
+
+        <button
+            type="submit"
+            class="evolution-card @(evo.EsActual ? "evolution-current" : "")">
+
+            <p>#@evo.NumeroPokedex</p>
+
+            @if(!evo.EsActual)
+            {
+                <img src="@evo.Imagen" />
+            }
+
+            <h6>@evo.Nombre</h6>
+
+            @if(evo.EsActual)
+            {
+                <span>⭐ Actual ⭐</span>
+            }
+
+        </button>
+
+    </form>
+
+    @if(evo != caminoPrincipal.Last())
+    {
+        <div class="evolution-arrow">
+            →
+        </div>
+    }
+
+}
+
+</div>
+
+@if(bifurcaciones.Any())
+{
+    <div class="evolution-container mt-3">
+
+        @foreach(var evo in bifurcaciones)
+        {
+            <form asp-action="Busqueda"
+                  asp-controller="Pokemon"
+                  method="post"
+                  class="evolution-form">
+
+                <input type="hidden"
+                       name="busqueda"
+                       value="@evo.Nombre" />
+
+                <button
+                    type="submit"
+                    class="evolution-card">
+
+                    <p>#@evo.NumeroPokedex</p>
+
+                    <img src="@evo.Imagen"/>
+
+                    <h6>@evo.Nombre</h6>
+
+                </button>
+
+            </form>
+        }
+
+    </div>
+
+}
+
+
+
+
+</* --------------- Fin de cadena Evolitva --------------------------------*/>
                     
                     </div></* --------------- Fin del body --------------------------------*/>
                 
                 </div>   </* ------------------ Fin del class card --------------*/>
             
             </div></*-------------fin div class col md6 --------------------*/>
-    </form>
 </div>
+
+<script>
+
+const listaPokemon =
+@Html.Raw(JsonSerializer.Serialize(Model.ListaPokemon));
+
+</script>
+
+@section Scripts{
+    <script src="~/js/pokeScripts.js"></script>
+}

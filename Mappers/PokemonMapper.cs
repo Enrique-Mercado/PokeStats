@@ -34,7 +34,7 @@ public static class PokemonMapper
         //Console.WriteLine($"Ataque: {pokemon.Ataque}");
         //Console.WriteLine($"Defensa: {pokemon.Defensa}");
         //Console.WriteLine($"Clase CSS: {pokemon.ClaseHeader}");
-        Console.WriteLine($"Descr Habili: { pokemon.DescripcionHabilidad}");
+        //Console.WriteLine($"Descr Habili: { pokemon.Habilidades.FirstOrDefault()?.Descripcion}");
 
 
         return pokemon;
