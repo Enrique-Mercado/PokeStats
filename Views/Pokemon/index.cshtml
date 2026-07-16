@@ -10,34 +10,39 @@
     <h2>
         @ViewBag.Nombre
     </h2>
-    <form asp-controller="Pokemon" asp-action="Busqueda" method="post" id="formBusqueda">
-        <input  id="busqueda" name="busqueda" type="text" class="form-control" placeholder="Buscar Pokemon..." /> 
-        <div id="sugerencias" class="autocomplete-list"></div>
-        <button class="btn btn-primary">Buscar</button>
-    </form>
-
-        <p>
-            @ViewBag.Busca
-            @ViewBag.Pokemon
-        </p>
-        
-        <p>
 
 
-            @if (Model != null)
-            {
-                <text>Pokemon encontrado: @Model.Pokemon.Nombre.ToUpper()</text>
-            }
-            else
-            {
-                <text>No se encontró el Pokemon</text>
-            }
-        </p>
+
+
+
+
 
         <div class="row justify-content-Left">
 
-            <div class="col-md-6">
+            <div class="col-md-5">
+                    
+                <div class="pokemon-panel">
+                <!-- Añadimos d-flex y gap-2 al formulario -->
+                <form asp-controller="Pokemon" asp-action="Busqueda" method="post" id="formBusqueda" class="d-flex gap-2">
+                    
+                    <!-- Contenedor del input para que el autocompletado no rompa la fila -->
+                    <div class="position-relative flex-grow-1">
+                        <input id="busqueda" name="busqueda" type="text" class="form-control" placeholder="Buscar Pokemon..." /> 
+                        <!-- El div de sugerencias queda absolutamente posicionado abajo del input -->
+                        <div id="sugerencias" class="autocomplete-list position-absolute w-100" style="z-index: 1000;"></div> 
+                    </div>
 
+                    <button class="btn btn-primary">Buscar</button>
+                </form>
+                </div>
+                @if(Model.TieneError)
+{
+    <div class="alert alert-danger">
+
+        @Model.Error
+
+    </div>
+}
                 <div class="card">
 
                     <div class="card-header  d-flex justify-content-between align-items-center @Model.Pokemon.ClaseHeader">
@@ -327,20 +332,7 @@
                name="busqueda"
                value="@evo.Nombre" />
                
-   @if(!string.IsNullOrEmpty(evo.MetodoEvolucion))
-{
-    <div class="evolution-method">
 
-        <small>
-            @evo.MetodoEvolucion
-        </small>
-
-        <strong>
-            @evo.ValorMetodo
-        </strong>
-
-    </div>
-}
 
         <button
             type="submit"
@@ -361,13 +353,53 @@
             }
 
         </button>
+         @if(evo.EsBifurcacion)
+    {
+        <div class="branch-tree">
+
+            <div class="branch-vertical"></div>
+
+            <div class="branch-horizontal"></div>
+
+        </div>
+    }
 
     </form>
 
-    @if(evo != caminoPrincipal.Last())
-    {
-        <div class="evolution-arrow">
-            →
+   @if(evo != caminoPrincipal.Last())
+{
+    EvolucionPokemon siguiente =
+        caminoPrincipal[
+            caminoPrincipal.IndexOf(evo) + 1
+        ];
+
+    <div class="evolution-transition">
+
+        @if(!string.IsNullOrEmpty(siguiente.MetodoEvolucion))
+        {
+            <div class="evolution-method">
+
+                <small>
+
+                    @siguiente.MetodoEvolucion
+
+                </small>
+
+                <strong>
+
+                    @siguiente.ValorMetodo
+
+                </strong>
+
+            </div>
+            }
+
+            <div class="evolution-arrow">
+
+                →
+
+            </div>
+
         </div>
     }
 
@@ -377,7 +409,8 @@
 
 @if(bifurcaciones.Any())
 {
-    <div class="evolution-container mt-3">
+    
+    <div class="evolution-container2 mt-3">
 
         @foreach(var evo in bifurcaciones)
         {
@@ -385,10 +418,28 @@
                   asp-controller="Pokemon"
                   method="post"
                   class="evolution-form">
-
+                    <div class="branch-down"></div>
                 <input type="hidden"
                        name="busqueda"
                        value="@evo.Nombre" />
+@if(!string.IsNullOrEmpty(evo.MetodoEvolucion))
+{
+    <div class="evolution-method">
+
+        <small>
+
+            @evo.MetodoEvolucion
+
+        </small>
+
+        <strong>
+
+            @evo.ValorMetodo
+
+        </strong>
+
+    </div>
+}
 
                 <button
                     type="submit"

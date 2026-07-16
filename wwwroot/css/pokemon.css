@@ -3,7 +3,7 @@
 =========================== */
 .pokemon-card
 {
-    border-radius:20px;
+    border-radius:15px;
     transition: 0.3s;
 
 }
@@ -567,9 +567,17 @@ ACCORDION CONTROL
    LINEA DE EVOLUCION
 =========================== */
 .evolution-arrow{
-    font-size:2rem;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
     font-weight:bold;
-    align-self:center;
+
+    margin:0 10px;
 }
 .evolution-container{
 
@@ -578,6 +586,19 @@ ACCORDION CONTROL
     justify-content:center;
 
     align-items:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+.evolution-container2{
+
+    display:flex;
+
+    justify-content:right;
+
+    align-items:right;
 
     gap:15px;
 
@@ -604,7 +625,7 @@ ACCORDION CONTROL
 }
 .evolution-card img{
 
-    width:70px;
+    width:100%;
 
 }
 .evolution-down{
@@ -628,15 +649,17 @@ ACCORDION CONTROL
 .evolution-method{
 
     display:flex;
+    flex-direction:column;  
 
-    flex-direction:column;
+    padding:4px 8px;
 
-    align-items:center;
+    border-radius:10px;
 
-    margin-bottom:6px;
+    font: size 0.95em;
 
-    color:#ffd54f;
+    background:rgba(255,255,255,.2);
 
+    margin-bottom: 4px
 }
 
 .evolution-method small{
@@ -650,12 +673,77 @@ ACCORDION CONTROL
     font-size:.80rem;
 
 }
+.evolution-transition{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:right;
+
+    justify-content:right;
+
+    margin:0 2px;
+
+}
+.evolution-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+.branch-tree{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    margin-top:8px;
+
+}
+.branch-vertical{
+
+    width:3px;
+
+    height:22px;
+
+    background:white;
+
+}
+.branch-horizontal{
+
+    width:240px;
+
+    height:3px;
+
+    background:white;
+
+    border-radius:5px;
+
+}
+.branch-down{
+
+    width:3px;
+
+    height:18px;
+
+    background:white;
+
+    margin-bottom:6px;
+
+}
 
 /* ===========================
-   MEGAS RESERVADO
+   MEGAS
 =========================== */
 
 .pokemon-form-left{
+  
     width:70px;
 
     min-height:70px;
@@ -665,6 +753,9 @@ ACCORDION CONTROL
     justify-content:center;
 
     align-items:center;
+
+    flex-direction:column;
+
 }
 .pokemon-form-right{
 
@@ -677,6 +768,8 @@ ACCORDION CONTROL
     justify-content:center;
 
     align-items:center;
+
+    flex-direction:column;
 
 }
 
@@ -713,4 +806,54 @@ ACCORDION CONTROL
 
     font-weight:bold;
 
+}
+
+/* ===========================
+   Panel de busqueda
+=========================== */
+
+.pokemon-panel{
+
+    flex-direction:row;
+    
+   
+    padding:4px 10px;
+    font-size:.75rem;
+
+    background:rgba(255,255,255,.2);
+
+    margin-bottom:8px;
+    border-radius:20px;
+    width:100%;
+    margin:0 auto 20px auto;
+
+}
+/* ===========================
+   random shi
+=========================== */
+/* El padre controla la alineación y la separación */
+/* El contenedor padre organiza las columnas en fila y les da el espacio del 10% */
+.contenedor-layout {
+    display: flex;
+    flex-direction: row; /* Asegura que vayan en horizontal */
+    width: 100%;
+    gap: 1%;            /* Espacio exacto del 10% en medio de las columnas */
+    box-sizing: border-box;
+}
+
+/* Las clases individuales que querías crear para dar formato */
+.col-izq {
+  width: 60%;
+  background-color: #680dd6; /* Color de prueba */
+  color: #d2bebe;
+}
+
+.col-cen {
+  width: 15%;
+  background-color: #f7d794; /* Color de prueba */
+}
+
+.col-der {
+  width: 60%;
+  background-color: #bc3208; /* Color de prueba */
 }
