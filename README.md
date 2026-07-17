@@ -11,7 +11,7 @@ An interactive Pokédex built with ASP.NET Core MVC — consuming the public Pok
 
 📸 Screenshot — Main search interface
 <div align="center">
-  <img src="docs/screenshots/1. Pantalla de busqueda.png" alt="Búsqueda y Página Principal" width="800"/>
+  <img src="docs/screenshots/1. Pantalla de busqueda.png" width="800"/>
 </div>
 
 
@@ -161,7 +161,7 @@ Screenshots
 
 📸 Search and Landing
 <div align="center">
-  <img src="docs/screenshots/2. Busqueda de Pokemon.png" alt="Búsqueda y Página Principal" width="800"/>
+  <img src="docs/screenshots/2. Busqueda de Pokemon.png" width="800"/>
 </div>
 
 
@@ -170,7 +170,7 @@ Screenshots
 
 📸 Pokémon Detail — Stats
 <div align="center">
-  <img src="docs/screenshots/3. Detalle de pokemon.png" alt="Búsqueda y Página Principal" width="800"/>
+  <img src="docs/screenshots/3. Detalle de pokemon.png"  width="800"/>
 </div>
 
 
@@ -179,7 +179,7 @@ Screenshots
 
 📸 Evolution Chain — Linear
 <div align="center">
-  <img src="docs/screenshots/4. Cadena Evolutiva.png" alt="Búsqueda y Página Principal" width="800"/>
+  <img src="docs/screenshots/4. Cadena Evolutiva.png"  width="800"/>
 </div>
 
 
@@ -188,7 +188,7 @@ Screenshots
 
 📸 Evolution Chain — Branched
 <div align="center">
-  <img src="docs/screenshots/5. Cadena evolutiva Ramificada.png" alt="Búsqueda y Página Principal" width="800"/>
+  <img src="docs/screenshots/5. Cadena evolutiva Ramificada.png" width="800"/>
 </div>
 
 
@@ -197,7 +197,7 @@ Screenshots
 
 📸 Regional Forms & Mega Evolutions
 <div align="center">
-  <img src="docs/screenshots/6. Formas regionales y megas.png" alt="Búsqueda y Página Principal" width="800"/>
+  <img src="docs/screenshots/6. Formas regionales y megas.png"  width="800"/>
 </div>
 
 
