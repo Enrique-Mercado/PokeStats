@@ -97,4 +97,5 @@ C:\Users\MARX_\PokeStatsV1\obj\Debug\net10.0\PokeStatsV1.pdb
 C:\Users\MARX_\PokeStatsV1\obj\Debug\net10.0\PokeStatsV1.genruntimeconfig.cache
 C:\Users\MARX_\PokeStatsV1\obj\Debug\net10.0\ref\PokeStatsV1.dll
 C:\Users\MARX_\PokeStatsV1\obj\Debug\net10.0\compressed\a6nmuz9jqp-{0}-ee6am843bb-ee6am843bb.gz
-C:\Users\MARX_\PokeStatsV1\obj\Debug\net10.0\compressed\6u4cos3ufd-{0}-8wtgg1lqso-8wtgg1lqso.gz
+C:\Users\MARX_\PokeStatsV1\obj\Debug\net10.0\compressed\6u4cos3ufd-{0}-et1xscg1s7-et1xscg1s7.gz
+C:\Users\MARX_\PokeStatsV1\obj\Debug\net10.0\compressed\0rcrxk2b9h-{0}-4e4xnwiyiz-4e4xnwiyiz.gz
