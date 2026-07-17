@@ -17,7 +17,7 @@ Una Pokédex interactiva construida con ASP.NET Core MVC — consumiendo la Pok�
 
 <!-- PLACEHOLDER DE CAPTURA DE PANTALLA -->
 > 📸 *Captura de pantalla — Interfaz principal de búsqueda*
-> `[Insertar captura hero aquí]`
+> `![Búsqueda principal](docs/screenshots/1. Pantalla de busqueda.png)`
 
 </div>
 
@@ -158,27 +158,27 @@ La aplicación estará disponible en `http://localhost:5000`.
 ## Capturas de Pantalla
 
 > 📸 *Búsqueda y Página Principal*
-> `[Insertar captura — vista de búsqueda en inicio]`
+> `![Búsqueda principal](docs/screenshots/2. Busqueda de Pokemon.png)`
 
 ---
 
 > 📸 *Detalle del Pokémon — Estadísticas*
-> `[Insertar captura — stats con barras de progreso y colores por tipo]`
+> `![Búsqueda principal](docs/screenshots/3. Detalle de pokemon.png)`
 
 ---
 
 > 📸 *Cadena Evolutiva — Lineal*
-> `[Insertar captura — cadena evolutiva lineal]`
+> `![Búsqueda principal](docs/screenshots/4. Cadena Evolutiva.png)`
 
 ---
 
 > 📸 *Cadena Evolutiva — Ramificada*
-> `[Insertar captura — evolución ramificada (ej. Eevee)]`
+> `![Búsqueda principal](docs/screenshots/5. Cadena evolutiva Ramificada.png)`
 
 ---
 
 > 📸 *Formas Regionales y Mega Evoluciones*
-> `[Insertar captura — sección de formas alternativas]`
+>`![Búsqueda principal](docs/screenshots/6. Formas regionales y megas.png)`
 
 ---
 
